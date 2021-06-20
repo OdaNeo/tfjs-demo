@@ -20,9 +20,9 @@ window.onload = async () => {
         units: 10,
         inputShape: [2],
         activation: "tanh",
-        // kernelRegularizer: tf.regularizers.l2({ l2: 1 })
+        // kernelRegularizer: tf.regularizers.l2({ l2: 1 })  // l2正则化
     }));
-    model.add(tf.layers.dropout({ rate: 0.9 }));
+    model.add(tf.layers.dropout({ rate: 0.9 })); // 丢弃法
     model.add(tf.layers.dense({
         units: 1,
         activation: 'sigmoid'
