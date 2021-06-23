@@ -9,6 +9,7 @@ const MOBILENET_MODEL_PATH = 'http://127.0.0.1:8080/mobilenet/new/model.json'
 const main = async () => {
     // load data
     const { xs, ys, classes } = await getDate()
+
     // define model
     const mobileNet = await tf.loadLayersModel(MOBILE_NET_URL)
     // const mobileNet = await tf.loadGraphModel(MOBILENET_MODEL_PATH, { fromTFHub: false })
@@ -40,7 +41,6 @@ const main = async () => {
         optimizer: tf.train.adam(),
         metrics: ["acc"],
     })
-
 
     await model.fit(xs, ys, {
         epochs: 10
