@@ -2,7 +2,6 @@
   "name": "js-ml-code",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "dependencies": {
     "@tensorflow-models/speech-commands": "^0.4.0",
     "@tensorflow/tfjs": "^3.7.0",
