@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
-    "@tensorflow-models/speech-commands": "^0.4.0",
-    "@tensorflow/tfjs": "^3.7.0",
-    "@tensorflow/tfjs-core": "^3.7.0",
-    "@tensorflow/tfjs-node": "^3.7.0",
-    "@tensorflow/tfjs-node-gpu": "^3.7.0",
-    "@tensorflow/tfjs-vis": "^1.2.0"
+    "@tensorflow-models/speech-commands": "0.4.0",
+    "@tensorflow/tfjs": "3.7.0",
+    "@tensorflow/tfjs-core": "3.7.0",
+    "@tensorflow/tfjs-node": "3.7.0",
+    "@tensorflow/tfjs-node-gpu": "3.7.0",
+    "@tensorflow/tfjs-vis": "1.2.0"
   },
   "devDependencies": {},
   "scripts": {

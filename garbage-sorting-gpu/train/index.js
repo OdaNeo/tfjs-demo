@@ -4,11 +4,11 @@ const getDate = require('./data')
 const MOBILE_NET_URL =
     "https://ai-sample.oss-cn-hangzhou.aliyuncs.com/pipcook/models/mobilenet/web_model/model.json"
 
-const MOBILENET_MODEL_PATH = 'http://127.0.0.1:8080/mobilenet/new/model.json'
+// const MOBILENET_MODEL_PATH = 'http://127.0.0.1:8080/mobilenet/new/model.json'
 
 const main = async () => {
     // load data
-    const { xs, ys, classes } = await getDate()
+    const { ds, classes } = await getDate()
 
     // define model
     const mobileNet = await tf.loadLayersModel(MOBILE_NET_URL)
@@ -41,10 +41,14 @@ const main = async () => {
         optimizer: tf.train.adam(),
         metrics: ["acc"],
     })
+    try {
+        await model.fitDataset(ds, {
+            epochs: 20
+        })
+    } catch (err) {
+        console.log(err)
+    }
 
-    await model.fit(xs, ys, {
-        epochs: 10
-    })
 
     // save
     await model.save(`file://${process.cwd()}/output`)
