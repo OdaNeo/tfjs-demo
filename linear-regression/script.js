@@ -17,6 +17,7 @@ window.onload = async () => {
 
     const inputs = tf.tensor(xs);
     const labels = tf.tensor(ys);
+
     await model.fit(inputs, labels, {
         batchSize: 4,
         epochs: 200,

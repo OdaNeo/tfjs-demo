@@ -12,7 +12,7 @@ const main = async () => {
 
     // define model
     const mobileNet = await tf.loadLayersModel(MOBILE_NET_URL)
-    // const mobileNet = await tf.loadGraphModel(MOBILENET_MODEL_PATH, { fromTFHub: false })
+    // const mobileNet = await tf.loadGraphModel(MOBILENET_MODEL_PATH, { fromTFHub: true })
 
     // new model
     const model = tf.sequential()
@@ -39,16 +39,12 @@ const main = async () => {
     model.compile({
         loss: "sparseCategoricalCrossentropy",
         optimizer: tf.train.adam(),
-        metrics: ["acc"],
+        metrics: ["accuracy"],
     })
-    try {
-        await model.fitDataset(ds, {
-            epochs: 20
-        })
-    } catch (err) {
-        console.log(err)
-    }
 
+    await model.fitDataset(ds, {
+        epochs: 5,
+    })
 
     // save
     await model.save(`file://${process.cwd()}/output`)

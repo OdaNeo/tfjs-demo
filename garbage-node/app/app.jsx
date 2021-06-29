@@ -3,7 +3,8 @@ import * as tf from '@tensorflow/tfjs'
 import { file2img, img2tenser } from './utils'
 import CLASSES from '../output/classes.json'
 
-const DATA_URL = 'http://localhost:5000/model.json'
+//  copy output to dist/output
+const DATA_URL = 'output/model.json'
 
 function  App (){
 

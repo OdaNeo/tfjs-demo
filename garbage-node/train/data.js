@@ -21,7 +21,7 @@ const getDate = async () => {
     classes.forEach((dir, dirIndex) => {
         fs.readdirSync(`${TRAIN_DIR}/${dir}`)
             .filter(n => n.match(/.jpg$/))
-            // .slice(0, 100)
+            .slice(0, 100)
             .forEach(filename => {
                 const imgPath = `${TRAIN_DIR}/${dir}/${filename}`
                 data.push({ imgPath, dirIndex })

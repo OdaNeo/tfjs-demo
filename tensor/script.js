@@ -5,6 +5,7 @@ const input = [1, 2, 3, 4];
 const w = [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7]];
 const output = [0, 0, 0, 0];
 
+// 1*1 2*2 3*3 4*4
 for (let i = 0; i < w.length; i++) {
     for (let j = 0; j < input.length; j++) {
         output[i] += input[j] * w[i][j];
