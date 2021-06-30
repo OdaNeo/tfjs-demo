@@ -110,9 +110,9 @@ window.onload = async () => {
                 [28, 28],
                 true
             ).slice([0, 0, 0], [28, 28, 1])
-            .toFloat()
-            .div(255)
-            .reshape([1, 28, 28, 1]);
+                .toFloat()
+                .div(255)
+                .reshape([1, 28, 28, 1]);
         });
         const pred = model.predict(input).argMax(1);
         alert(`预测结果为 ${pred.dataSync()[0]}`);

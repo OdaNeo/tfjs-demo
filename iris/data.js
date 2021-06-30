@@ -18,7 +18,7 @@
 import * as tf from '@tensorflow/tfjs';
 
 export const IRIS_CLASSES =
-    ['山鸢尾', '变色鸢尾', '维吉尼亚鸢尾'];
+  ['山鸢尾', '变色鸢尾', '维吉尼亚鸢尾'];
 export const IRIS_NUM_CLASSES = IRIS_CLASSES.length;
 
 // Iris flowers data. Source:
@@ -171,7 +171,7 @@ export function getIrisData(testSplit) {
     const yTests = [];
     for (let i = 0; i < IRIS_CLASSES.length; ++i) {
       const [xTrain, yTrain, xTest, yTest] =
-          convertToTensors(dataByClass[i], targetsByClass[i], testSplit);
+        convertToTensors(dataByClass[i], targetsByClass[i], testSplit);
       xTrains.push(xTrain);
       yTrains.push(yTrain);
       xTests.push(xTest);

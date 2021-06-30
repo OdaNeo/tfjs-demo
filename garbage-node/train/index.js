@@ -8,7 +8,7 @@ const MOBILE_NET_URL =
 
 const main = async () => {
     // load data
-    const { ds, classes } = await getDate()
+    const { ds, xTest, yTest, classes } = await getDate()
 
     // define model
     const mobileNet = await tf.loadLayersModel(MOBILE_NET_URL)
@@ -27,7 +27,7 @@ const main = async () => {
     model.add(tf.layers.flatten())
 
     model.add(tf.layers.dense({
-        units: 20,
+        units: 10,
         activation: 'relu'
     }))
     model.add(tf.layers.dense({
@@ -43,7 +43,8 @@ const main = async () => {
     })
 
     await model.fitDataset(ds, {
-        epochs: 5,
+        epochs: 20,
+        validationData: [xTest, yTest],
     })
 
     // save

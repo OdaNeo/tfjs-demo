@@ -21,7 +21,7 @@ const getDate = async () => {
     classes.forEach((dir, dirIndex) => {
         fs.readdirSync(`${TRAIN_DIR}/${dir}`)
             .filter(n => n.match(/.jpg$/))
-            .slice(0, 100)
+            // .slice(0, 100)
             .forEach(filename => {
                 const imgPath = `${TRAIN_DIR}/${dir}/${filename}`
                 data.push({ imgPath, dirIndex })
@@ -30,6 +30,7 @@ const getDate = async () => {
 
     tf.util.shuffle(data)
 
+    // train
     const ds = tf.data.generator(function* () {
         const count = data.length;
         const batchSize = 100
@@ -52,8 +53,26 @@ const getDate = async () => {
         }
     })
 
+    // test
+    const [xTest, yTest] = tf.tidy(() => {
+        const inputs = []
+        const labels = []
+
+        for (let k = 0; k < 15; k++) {
+            const { imgPath, dirIndex } = data[k]
+            const x = img2x(imgPath)
+            inputs.push(x)
+            labels.push(dirIndex)
+        }
+        return [tf.concat(inputs), tf.tensor(labels)]
+    })
+
+
+
     return {
         ds,
+        xTest,
+        yTest,
         classes
     }
 }
